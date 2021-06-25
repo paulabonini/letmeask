@@ -6,14 +6,33 @@
   aside {
     flex: 7;
 
-    background: #835afd;
+    // background: #835afd;
+    background: url("../assets/images/capa.jpg") no-repeat;
+    background-size: cover;
+
     color: #fff;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
+    // align-items: center;
+
+    position: relative;
 
     padding: 120px 80px;
+
+    > div {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      // max-width: 300px;
+      width: 60%;
+
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 16px;
+
+      text-align: center;
+    }
 
     img {
       max-width: 320px;

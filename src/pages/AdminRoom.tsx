@@ -2,7 +2,7 @@ import { useHistory, useParams } from "react-router-dom";
 import answerImg from "../assets/images/answer.svg";
 import checkImg from "../assets/images/check.svg";
 import deleteImg from "../assets/images/delete.svg";
-import logoImg from "../assets/images/logo.svg";
+import foneImg from "../assets/images/fone.png";
 import { Button } from "../components/Button/index";
 import { Question } from "../components/Question/index";
 import { RoomCode } from "../components/RoomCode/index";
@@ -51,7 +51,7 @@ export function AdminRoom() {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="letmeask" />
+          <img src={foneImg} alt="letmeask" />
           <div>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>

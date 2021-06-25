@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import illustrationImg from "../assets/images/illustration.svg";
-import logoImg from "../assets/images/logo.svg";
+import foneImg from "../assets/images/fone.png";
 import { Button } from "../components/Button/index";
 import { useAuth } from "../hooks/useAuth";
 import { database } from "../services/firebase";
@@ -41,7 +41,7 @@ export function NewRoom() {
       </aside>
       <main>
         <div className="main-content">
-          <img src={logoImg} alt="Letmeask" />
+          <img src={foneImg} alt="Letmeask" />
           <h2>Criar uma nova sala</h2>
           <form onSubmit={handleCreateRoom}>
             <input

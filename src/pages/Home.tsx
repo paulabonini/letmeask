@@ -1,8 +1,9 @@
 import { FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import googleIconImg from "../assets/images/google-icon.svg";
-import illustrationImg from "../assets/images/illustration.svg";
-import logoImg from "../assets/images/logo.svg";
+// import illustrationImg from "../assets/images/illustration.svg";
+// import capaImg from "../assets/images/capa.jpg";
+import logoImg from "../assets/images/logo.png";
 import { Button } from "../components/Button/index";
 import { useAuth } from "../hooks/useAuth";
 import { database } from "../services/firebase";
@@ -45,12 +46,15 @@ export function Home() {
   return (
     <div id="page-auth">
       <aside>
-        <img
+        {/* <img
           src={illustrationImg}
           alt="Ilustração simbolizando perguntas e respostas"
-        />
-        <strong>Crie salas de Q&amp;A ao-vivo</strong>
-        <p>Tire as dúvidas da sua audiência em tempo real</p>
+        /> */}
+        {/* <img src={capaImg} alt="" /> */}
+        <div>
+          <strong>Crie salas de Q&amp;A ao-vivo</strong>
+          <p>Tire as dúvidas da sua audiência em tempo real</p>
+        </div>
       </aside>
       <main>
         <div className="main-content">

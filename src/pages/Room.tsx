@@ -1,8 +1,7 @@
-import { useEffect } from "react";
 import { FormEvent, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import logoImg from "../assets/images/logo.svg";
+import foneImg from "../assets/images/fone.png";
 import { Button } from "../components/Button/index";
 import { Question } from "../components/Question/index";
 
@@ -70,7 +69,7 @@ export function Room() {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="letmeask" />
+          <img src={foneImg} alt="letmeask" />
           <RoomCode code={roomId} />
         </div>
       </header>
