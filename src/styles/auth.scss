@@ -6,14 +6,10 @@
   aside {
     flex: 7;
 
-    // background: #835afd;
     background: url("../assets/images/capa.jpg") no-repeat;
     background-size: cover;
 
     color: #fff;
-
-    // justify-content: center;
-    // align-items: center;
 
     position: relative;
 
@@ -25,8 +21,8 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
-      // max-width: 300px;
       width: 60%;
+      padding: 8px;
 
       background-color: rgba(0, 0, 0, 0.4);
       border-radius: 16px;
@@ -105,7 +101,7 @@
       margin-top: 16px;
 
       a {
-        color: #e559f9;
+        color: #f90505;
       }
     }
   }

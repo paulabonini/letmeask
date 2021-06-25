@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { database } from '../services/firebase';
 import { useAuth } from './useAuth';
 
-type FirebaseQuestions = Record<
+type FirebaseSongRequests = Record<
   string,
   {
     author: {
@@ -19,7 +19,7 @@ type FirebaseQuestions = Record<
   }
 >;
 
-type QuestionType = {
+type SongRequestType = {
   id: string;
   author: {
     name: string;
@@ -34,7 +34,7 @@ type QuestionType = {
 
 export function useRoom(roomId: string) {
   const {user} = useAuth();
-  const [questions, setQuestions] = useState<QuestionType[]>([]);
+  const [requests, setRequests] = useState<SongRequestType[]>([]);
   const [title, setTitle] = useState("");
 
   useEffect(() => {
@@ -42,9 +42,9 @@ export function useRoom(roomId: string) {
 
     roomRef.on("value", (room) => {
       const databaseRoom = room.val();
-      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
+      const firebaseSongRequests: FirebaseSongRequests = databaseRoom.requests ?? {};
 
-      const parsedQuestions = Object.entries(firebaseQuestions).map(
+      const parsedRequests = Object.entries(firebaseSongRequests).map(
         ([key, value]) => {
           return {
             id: key,
@@ -59,7 +59,7 @@ export function useRoom(roomId: string) {
       );
 
       setTitle(databaseRoom.title);
-      setQuestions(parsedQuestions);
+      setRequests(parsedRequests);
     });
 
     return () => {
@@ -67,5 +67,5 @@ export function useRoom(roomId: string) {
     }
   }, [roomId, user?.id]);
 
-  return {questions, title}
+  return {requests, title}
 }

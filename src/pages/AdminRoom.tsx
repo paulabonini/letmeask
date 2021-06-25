@@ -3,9 +3,9 @@ import answerImg from "../assets/images/answer.svg";
 import checkImg from "../assets/images/check.svg";
 import deleteImg from "../assets/images/delete.svg";
 import foneImg from "../assets/images/fone.png";
-import { Button } from "../components/Button/index";
-import { Question } from "../components/Question/index";
-import { RoomCode } from "../components/RoomCode/index";
+import { Button } from "../components/Button";
+import { RoomCode } from "../components/RoomCode";
+import { SongRequest } from "../components/SongRequest";
 import { useRoom } from "../hooks/useRoom";
 import { database } from "../services/firebase";
 import "../styles/room.scss";
@@ -19,7 +19,7 @@ export function AdminRoom() {
   const params = useParams<RoomParams>();
   const roomId = params.id;
 
-  const { questions, title } = useRoom(roomId);
+  const { requests, title } = useRoom(roomId);
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -29,21 +29,21 @@ export function AdminRoom() {
     history.push("/");
   }
 
-  async function handleCheckQuestionAsAnswered(questionId: string) {
-    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+  async function handleCheckSongRequestAsAnswered(requestId: string) {
+    await database.ref(`rooms/${roomId}/requests/${requestId}`).update({
       isAnswered: true,
     });
   }
 
-  async function handleHighlightQuestion(questionId: string) {
-    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+  async function handleHighlightSongRequest(requestId: string) {
+    await database.ref(`rooms/${roomId}/requests/${requestId}`).update({
       isHighlighted: true,
     });
   }
 
-  async function handleDeleteQuestion(questionId: string) {
+  async function handleDeleteSongRequest(requestId: string) {
     if (window.confirm("Tem certeza que você deseja excluir esta pergunta?")) {
-      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
+      await database.ref(`rooms/${roomId}/requests/${requestId}`).remove();
     }
   }
 
@@ -64,47 +64,53 @@ export function AdminRoom() {
       <main>
         <div className="room-title">
           <h1>Sala {title}</h1>
-          {questions.length > 0 && <span>{questions.length} pergunta(s) </span>}
+          {requests.length > 0 && <span>{requests.length} pergunta(s) </span>}
         </div>
-        <div className="question-list">
-          {questions.map((question) => {
-            return (
-              <Question
-                key={question.id}
-                content={question.content}
-                author={question.author}
-                isAnswered={question.isAnswered}
-                isHighlighted={question.isHighlighted}
-              >
-                {!question.isAnswered && (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => handleCheckQuestionAsAnswered(question.id)}
-                    >
-                      <img
-                        src={checkImg}
-                        alt="Marcar pergunta como respondida"
-                      />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleHighlightQuestion(question.id)}
-                    >
-                      <img src={answerImg} alt="Destacar pergunta" />
-                    </button>
-                  </>
-                )}
-                <button
-                  type="button"
-                  onClick={() => handleDeleteQuestion(question.id)}
+        {requests.length > 0 ? (
+          <div className="requests-list">
+            {requests.map((request) => {
+              return (
+                <SongRequest
+                  key={request.id}
+                  content={request.content}
+                  author={request.author}
+                  isAnswered={request.isAnswered}
+                  isHighlighted={request.isHighlighted}
                 >
-                  <img src={deleteImg} alt="Remover pergunta" />
-                </button>
-              </Question>
-            );
-          })}
-        </div>
+                  {!request.isAnswered && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          handleCheckSongRequestAsAnswered(request.id)
+                        }
+                      >
+                        <img
+                          src={checkImg}
+                          alt="Marcar pergunta como respondida"
+                        />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleHighlightSongRequest(request.id)}
+                      >
+                        <img src={answerImg} alt="Destacar pergunta" />
+                      </button>
+                    </>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteSongRequest(request.id)}
+                  >
+                    <img src={deleteImg} alt="Remover pergunta" />
+                  </button>
+                </SongRequest>
+              );
+            })}
+          </div>
+        ) : (
+          <p>Aguardando pedidos...</p>
+        )}
       </main>
     </div>
   );

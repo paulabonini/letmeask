@@ -6,7 +6,7 @@
       "$roomId": {
         ".read": true,
         ".write": "auth != null && (!data.exists() || data.child('authorId').val() == auth.id)",
-        "questions": {
+        "requests": {
           ".read": true,
           ".write": "auth != null && (!data.exists() || data.parent().child('authorId').val() == auth.id)",
           "likes": {

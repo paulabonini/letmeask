@@ -1,8 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import illustrationImg from "../assets/images/illustration.svg";
-import foneImg from "../assets/images/fone.png";
-import { Button } from "../components/Button/index";
+import logoImg from "../assets/images/logo.png";
+import { Button } from "../components/Button";
 import { useAuth } from "../hooks/useAuth";
 import { database } from "../services/firebase";
 import "../styles/auth.scss";
@@ -32,16 +31,14 @@ export function NewRoom() {
   return (
     <div id="page-auth">
       <aside>
-        <img
-          src={illustrationImg}
-          alt="Ilustração simbolizando perguntas e respostas"
-        />
-        <strong>Crie salas de Q&amp;A ao-vivo</strong>
-        <p>Tire as dúvidas da sua audiência em tempo real</p>
+        <div>
+          <strong>Crie salas de playlist ao-vivo</strong>
+          <p>Tire as dúvidas da sua audiência em tempo real</p>
+        </div>
       </aside>
       <main>
         <div className="main-content">
-          <img src={foneImg} alt="Letmeask" />
+          <img src={logoImg} alt="Letmeask" />
           <h2>Criar uma nova sala</h2>
           <form onSubmit={handleCreateRoom}>
             <input

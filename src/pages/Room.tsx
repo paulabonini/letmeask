@@ -2,10 +2,10 @@ import { FormEvent, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import foneImg from "../assets/images/fone.png";
-import { Button } from "../components/Button/index";
-import { Question } from "../components/Question/index";
+import { Button } from "../components/Button";
+import { SongRequest } from "../components/SongRequest";
 
-import { RoomCode } from "../components/RoomCode/index";
+import { RoomCode } from "../components/RoomCode";
 import { useAuth } from "../hooks/useAuth";
 import { useRoom } from "../hooks/useRoom";
 import { database } from "../services/firebase";
@@ -19,15 +19,15 @@ type RoomParams = {
 export function Room() {
   const { user } = useAuth();
   const params = useParams<RoomParams>();
-  const [newQuestion, setNewQuestion] = useState("");
+  const [newRequest, setNewRequest] = useState("");
   const roomId = params.id;
 
-  const { questions, title } = useRoom(roomId);
+  const { requests, title } = useRoom(roomId);
 
-  async function handleSendQuestion(event: FormEvent) {
+  async function handleSendSongRequest(event: FormEvent) {
     event.preventDefault();
 
-    if (newQuestion.trim() === "") {
+    if (newRequest.trim() === "") {
       return;
     }
 
@@ -35,8 +35,8 @@ export function Room() {
       throw new Error("You must be logged in");
     }
 
-    const question = {
-      content: newQuestion,
+    const request = {
+      content: newRequest,
       author: {
         name: user.name,
         avatar: user.avatar,
@@ -45,21 +45,21 @@ export function Room() {
       isAnswered: false,
     };
 
-    await database.ref(`rooms/${roomId}/questions`).push(question);
+    await database.ref(`rooms/${roomId}/requests`).push(request);
 
-    setNewQuestion("");
+    setNewRequest("");
   }
 
-  async function handleLikeQuestion(
-    questionId: string,
+  async function handleLikeSongRequest(
+    requestId: string,
     likeId: string | undefined
   ) {
     if (likeId) {
       await database
-        .ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
+        .ref(`rooms/${roomId}/requests/${requestId}/likes/${likeId}`)
         .remove();
     } else {
-      await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
+      await database.ref(`rooms/${roomId}/requests/${requestId}/likes`).push({
         authorId: user?.id,
       });
     }
@@ -77,14 +77,14 @@ export function Room() {
       <main>
         <div className="room-title">
           <h1>Sala {title}</h1>
-          {questions.length > 0 && <span>{questions.length} pergunta(s) </span>}
+          {requests.length > 0 && <span>{requests.length} pedido(s) </span>}
         </div>
 
-        <form onSubmit={handleSendQuestion}>
+        <form onSubmit={handleSendSongRequest}>
           <textarea
-            placeholder="O que você quer perguntar?"
-            onChange={(event) => setNewQuestion(event.target.value)}
-            value={newQuestion}
+            placeholder="O que você quer escutar hoje?"
+            onChange={(event) => setNewRequest(event.target.value)}
+            value={newRequest}
           />
 
           <div className="form-footer">
@@ -95,38 +95,36 @@ export function Room() {
               </div>
             ) : (
               <span>
-                Para enviar uma pergunta, <button>faça seu login</button>.
+                Para enviar um pedido, <button>faça seu login</button>.
               </span>
             )}
 
             <Button type="submit" disabled={!user}>
-              Enviar pergunta
+              Enviar pedido
             </Button>
           </div>
         </form>
 
-        <div className="question-list">
-          {questions.map((question) => {
+        <div className="requests-list">
+          {requests.map((request) => {
             return (
-              <Question
-                key={question.id}
-                content={question.content}
-                author={question.author}
-                isAnswered={question.isAnswered}
-                isHighlighted={question.isHighlighted}
+              <SongRequest
+                key={request.id}
+                content={request.content}
+                author={request.author}
+                isAnswered={request.isAnswered}
+                isHighlighted={request.isHighlighted}
               >
-                {!question.isAnswered && (
+                {!request.isAnswered && (
                   <button
-                    className={`like-button ${question.likeId ? "liked" : ""}`}
+                    className={`like-button ${request.likeId ? "liked" : ""}`}
                     type="button"
                     aria-label="Marcar como gostei"
                     onClick={() =>
-                      handleLikeQuestion(question.id, question.likeId)
+                      handleLikeSongRequest(request.id, request.likeId)
                     }
                   >
-                    {question.likeCount > 0 && (
-                      <span>{question.likeCount}</span>
-                    )}
+                    {request.likeCount > 0 && <span>{request.likeCount}</span>}
                     <svg
                       width="24"
                       height="24"
@@ -144,7 +142,7 @@ export function Room() {
                     </svg>
                   </button>
                 )}
-              </Question>
+              </SongRequest>
             );
           })}
         </div>
