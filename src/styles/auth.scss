@@ -68,6 +68,7 @@
 
     > img {
       align-self: center;
+      width: 100%;
     }
 
     h2 {
@@ -97,11 +98,11 @@
 
     p {
       font-size: 14px;
-      color: #737380;
+      color: var(--gray);
       margin-top: 16px;
 
       a {
-        color: #f90505;
+        color: var(--primary);
       }
     }
   }

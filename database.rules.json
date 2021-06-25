@@ -12,6 +12,10 @@
           "likes": {
             ".read": true,
             ".write": "auth != null && (!data.exists() || data.child('authorId').val() == auth.id)"
+          },
+          "highlights": {
+            ".read": true,
+            ".write": "auth != null && (!data.exists() || data.child('authorId').val() == auth.id)"
           }
         }
       }

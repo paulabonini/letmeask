@@ -1,3 +1,9 @@
+:root {
+  --primary: #f90505;
+  --secondary: #29292e;
+  --gray: #737380;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +12,7 @@
 
 body {
   background: #f8f8f8;
-  color: #29292e;
+  color: var(--secondary);
 }
 
 body,

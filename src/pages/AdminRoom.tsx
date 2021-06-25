@@ -6,6 +6,7 @@ import foneImg from "../assets/images/fone.png";
 import { Button } from "../components/Button";
 import { RoomCode } from "../components/RoomCode";
 import { SongRequest } from "../components/SongRequest";
+import { useAuth } from "../hooks/useAuth";
 import { useRoom } from "../hooks/useRoom";
 import { database } from "../services/firebase";
 import "../styles/room.scss";
@@ -15,6 +16,7 @@ type RoomParams = {
 };
 
 export function AdminRoom() {
+  const { user } = useAuth();
   const history = useHistory();
   const params = useParams<RoomParams>();
   const roomId = params.id;
@@ -35,10 +37,28 @@ export function AdminRoom() {
     });
   }
 
-  async function handleHighlightSongRequest(requestId: string) {
-    await database.ref(`rooms/${roomId}/requests/${requestId}`).update({
-      isHighlighted: true,
-    });
+  async function handleHighlightSongRequest(
+    requestId: string,
+    highlightId: string | undefined
+  ) {
+    if (highlightId) {
+      await database
+        .ref(`rooms/${roomId}/requests/${requestId}/highlights/${highlightId}`)
+        .remove();
+      await database.ref(`rooms/${roomId}/requests/${requestId}`).update({
+        isHighlighted: false,
+      });
+    } else {
+      await database
+        .ref(`rooms/${roomId}/requests/${requestId}/highlights`)
+        .push({
+          authorId: user?.id,
+        });
+
+      await database.ref(`rooms/${roomId}/requests/${requestId}`).update({
+        isHighlighted: true,
+      });
+    }
   }
 
   async function handleDeleteSongRequest(requestId: string) {
@@ -92,7 +112,12 @@ export function AdminRoom() {
                       </button>
                       <button
                         type="button"
-                        onClick={() => handleHighlightSongRequest(request.id)}
+                        onClick={() =>
+                          handleHighlightSongRequest(
+                            request.id,
+                            request.highlightId
+                          )
+                        }
                       >
                         <img src={answerImg} alt="Destacar pergunta" />
                       </button>
