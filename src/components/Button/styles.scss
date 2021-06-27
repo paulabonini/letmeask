@@ -1,10 +1,10 @@
 .button {
-  height: 50px;
+  height: 3rem;
   border-radius: 8px;
   font-weight: 500;
   background: var(--secondary);
-  color: #fff;
-  padding: 0 32px;
+  color: var(--white);
+  padding: 0 1rem;
 
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@
   }
 
   &.outlined {
-    background: #fff;
+    background: var(--white);
     border: 1px solid var(--primary);
     color: var(--primary);
   }

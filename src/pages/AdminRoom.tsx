@@ -84,7 +84,7 @@ export function AdminRoom() {
       <main>
         <div className="room-title">
           <h1>Sala {title}</h1>
-          {requests.length > 0 && <span>{requests.length} pergunta(s) </span>}
+          {requests.length > 0 && <span>{requests.length} pedido(s) </span>}
         </div>
         {requests.length > 0 ? (
           <div className="requests-list">

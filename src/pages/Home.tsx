@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import googleIconImg from "../assets/images/google-icon.svg";
 import logoImg from "../assets/images/logo.png";
+import arrowDownImg from "../assets/images/arrow-down.png";
 import { Button } from "../components/Button";
 import { useAuth } from "../hooks/useAuth";
 import { database } from "../services/firebase";
@@ -48,6 +49,7 @@ export function Home() {
           <strong>Crie salas de playlist ao-vivo</strong>
           <p>Atenda aos pedidos da audiência em tempo real</p>
         </div>
+        <img src={arrowDownImg} alt="" className="mobile" />
       </aside>
       <main>
         <div className="main-content">
