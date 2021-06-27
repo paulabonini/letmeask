@@ -17,7 +17,7 @@ type RoomParams = {
 };
 
 export function Room() {
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
   const params = useParams<RoomParams>();
   const [newRequest, setNewRequest] = useState("");
   const roomId = params.id;
@@ -95,7 +95,8 @@ export function Room() {
               </div>
             ) : (
               <span>
-                Para enviar um pedido, <button>faça seu login</button>.
+                Para enviar um pedido,{" "}
+                <button onClick={signInWithGoogle}>faça seu login</button>.
               </span>
             )}
 
