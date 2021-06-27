@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+![home](https://github.com/paulabonini/letmeask/blob/master/assets-readme/home.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="center">
+ Let me ask - MUSIC 🎧 Concluído 🚀
+</h4>
 
-## Available Scripts
+<p align="center">
+ <a href="#-sobre-o-projeto">Sobre</a> •
+ <a href="#-funcionalidades">Funcionalidades</a> •
+ <a href="#-como-executar-o-projeto">Como executar</a> • 
+ <a href="#-tecnologias">Tecnologias</a> • 
+ <a href="#-autora">Autora</a>
+</p>
 
-In the project directory, you can run:
 
-### `yarn start`
+## ❔ Sobre o projeto
+🎧 Let me ask - MUSIC é uma solução para ajudar músicos que trabalham com Ao vivo e recebem pedidos anotados em papéis a organizar os pedidos e poder melhor atendê-los.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Projeto desenvolvido durante o **NLW Together - Next Level Week** oferecido pela [Rocketseat](https://blog.rocketseat.com.br/primeira-next-level-week/).
+O NLW é uma experiência online com muito conteúdo prático, desafios e hacks onde o conteúdo fica disponível durante uma semana.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `yarn test`
+## ⚙ Funcionalidades
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Autenticação feita através da conta google.
+- Usuários podem criar salas ou entrar em salas existentes utilizando o código da mesma.
+- O administrador da sala pode destacar pedidos para indicar qual está sendo atendido no momento, encerrar o pedido já atendido e excluir aqueles que não forem pertinentes.
+- Ao entrar em uma sala é possível enviar pedidos e curtir pedidos já enviados.
 
-### `yarn build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ▶ Como executar o projeto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Pré-requisitos
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-### `yarn eject`
+#### 💻 Rodando a aplicação web (Frontend)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Clone este repositório
+$ git clone https://github.com/paulabonini/letmeask.git
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd letmeask
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Instale as dependências
+$ npm install
+# ou
+$ yarn install
 
-## Learn More
+# Execute a aplicação em modo de desenvolvimento
+$ npm run start
+# ou
+$ yarn start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+
+---
+
+## 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+#### **Website**  ([React](https://reactjs.org/)  +  [TypeScript](https://www.typescriptlang.org/))
+
+-   **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
+-   **[Firebase](https://firebase.google.com/)**
+-   **[Sass](https://sass-lang.com/)**
+-   **[classnames](https://www.npmjs.com/package/classnames)**
+
+---
+
+## 🤝 Como contribuir para o projeto
+
+1. Faça um **fork** do projeto.
+2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
+3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: My new feature"`
+4. Envie as suas alterações: `git push origin my-feature`
+
+---
+
+## 🦸 Autora
+
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/69061235?s=400&u=c75eb991ce477f4499a18288557a94ad079cb46b&v=4" width="100px;" alt="Foto da autora"/>
+
+
+ [![Linkedin Badge](https://img.shields.io/badge/-PaulaBonini-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/paulabonini/)](https://www.linkedin.com/in/paulabonini/) | 
+[![Gmail Badge](https://img.shields.io/badge/-paula_almeidabonini@hotmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:paula_almeidabonini@hotmail.com)](mailto:paula_almeidabonini@hotmail.com)
+
+---
