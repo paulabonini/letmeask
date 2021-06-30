@@ -15,7 +15,7 @@
     background: url("../assets/images/capa.jpg") no-repeat;
     background-size: cover;
 
-    color: var(--white);
+    color: var(--text);
 
     > div {
       margin-top: 20%;
@@ -23,7 +23,7 @@
       width: 80%;
       padding: 1rem;
 
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: var(--aside-container);
       border-radius: 16px;
 
       text-align: center;
@@ -38,7 +38,6 @@
       font-size: 1rem;
       line-height: 1rem;
       margin-top: 0.8rem;
-      color: #f8f8f8;
     }
 
     .mobile {
@@ -60,9 +59,8 @@
   }
 
   .main-content {
-    display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 60%;
 
     align-items: stretch;
     text-align: center;
@@ -71,7 +69,6 @@
       align-self: center;
       width: 70%;
     }
-
     h2 {
       font-size: 1.5rem;
       margin: 64px 0 24px;
@@ -87,8 +84,8 @@
         height: 50px;
         border-radius: 8px;
         padding: 0 16px;
-        background: var(--white);
-        border: 1px solid #a8a8b3;
+        background: var(--primary-color);
+        border: 1px solid var(--secondary);
         text-align: center;
       }
 
@@ -98,40 +95,47 @@
 
       button,
       input {
-        width: 70%;
+        width: 100%;
       }
     }
 
     p {
       font-size: 1rem;
-      color: var(--gray);
+      color: var(--dark-gray);
       margin-top: 16px;
 
       a {
-        color: var(--primary);
+        color: var(--dark-red);
       }
+    }
+
+    .switcher {
+      margin-top: 1rem;
     }
   }
 
   .create-room {
     margin-top: 64px;
     height: 50px;
+    width: 100%;
+    padding: 8px;
     border-radius: 8px;
     font-weight: 500;
-    background: #ea4335;
-    color: var(--white);
+    background: var(--primary-color);
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     cursor: pointer;
-    border: 0;
 
     transition: filter 0.2s;
 
     img {
-      margin-right: 8px;
+      margin-right: 1rem;
+      height: 100%;
     }
 
     &:hover {
@@ -141,7 +145,7 @@
 
   .separator {
     font-size: 14px;
-    color: #a8a8b3;
+    color: var(--gray);
 
     margin: 32px 0;
     display: flex;
@@ -151,7 +155,7 @@
       content: "";
       flex: 1;
       height: 1px;
-      background: #a8a8b3;
+      background: var(--gray);
       margin-right: 16px;
     }
 
@@ -159,7 +163,7 @@
       content: "";
       flex: 1;
       height: 1px;
-      background: #a8a8b3;
+      background: var(--gray);
       margin-left: 16px;
     }
   }

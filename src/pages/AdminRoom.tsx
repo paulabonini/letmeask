@@ -6,6 +6,7 @@ import foneImg from "../assets/images/fone.png";
 import { Button } from "../components/Button";
 import { RoomCode } from "../components/RoomCode";
 import { SongRequest } from "../components/SongRequest";
+import { ThemeSwitcher } from "../components/ThemeSwitcher";
 import { useAuth } from "../hooks/useAuth";
 import { useRoom } from "../hooks/useRoom";
 import { database } from "../services/firebase";
@@ -72,11 +73,10 @@ export function AdminRoom() {
       <header>
         <div className="content">
           <img src={foneImg} alt="letmeask" />
+          <ThemeSwitcher />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined onClick={handleEndRoom}>
-              Encerrar sala
-            </Button>
+            <Button onClick={handleEndRoom}>Encerrar sala</Button>
           </div>
         </div>
       </header>

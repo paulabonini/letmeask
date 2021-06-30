@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import logoImg from "../assets/images/logo.png";
 import { Button } from "../components/Button";
+import { ThemeSwitcher } from "../components/ThemeSwitcher";
 import { useAuth } from "../hooks/useAuth";
 import { database } from "../services/firebase";
 import "../styles/auth.scss";
@@ -52,6 +53,7 @@ export function NewRoom() {
           <p>
             Quer entrar em uma sala existente? <Link to="/">clique aqui</Link>
           </p>
+          <ThemeSwitcher />
         </div>
       </main>
     </div>

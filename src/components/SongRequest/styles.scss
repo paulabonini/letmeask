@@ -1,7 +1,7 @@
 .request {
-  background: #fefefe;
+  background: var(--background-container);
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 12px var(--box-shadow);
   padding: 1rem;
 
   & + .request {
@@ -9,16 +9,16 @@
   }
 
   &.highlighted {
-    background: #f4f0ff;
-    border: 1px solid var(--primary);
+    background: var(--red);
+    border: 1px solid var(--dark-red);
 
     footer .user-info span {
-      color: var(--secondary);
+      color: var(--gray);
     }
   }
 
   &.answered {
-    background: #dbdcdd;
+    background: var(--gray);
   }
 
   p {
@@ -43,7 +43,7 @@
 
       span {
         margin-left: 8px;
-        color: var(--gray);
+        color: var(--dark-gray);
         font-size: 14px;
       }
     }
@@ -62,14 +62,14 @@
       &.like-button {
         display: flex;
         align-items: flex-end;
-        color: var(--gray);
+        color: var(--dark-gray);
         gap: 8px;
 
         &.liked {
-          color: var(--primary);
+          color: var(--dark-red);
 
           svg path {
-            stroke: var(--primary);
+            stroke: var(--dark-red);
           }
         }
       }
