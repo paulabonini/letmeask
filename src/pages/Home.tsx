@@ -22,7 +22,7 @@ export function Home() {
     history.push("/rooms/new");
   }
 
-  async function handleJoinRom(event: FormEvent) {
+  async function handleJoinRoom(event: FormEvent) {
     event.preventDefault();
 
     if (roomCode.trim() === "") {
@@ -60,7 +60,7 @@ export function Home() {
             Crie sua sala com o Google
           </button>
           <div className="separator">ou entre em uma sala</div>
-          <form onSubmit={handleJoinRom}>
+          <form onSubmit={handleJoinRoom}>
             <input
               type="text"
               placeholder="Digite o código da sala"
